@@ -1,17 +1,10 @@
 ---
-import { model } from '../utils/openAI'
-import Logo from './Logo.astro'
-import Themetoggle from './Themetoggle.astro'
+import '../assetcs/css/header.css'
+const { title } = Astro.props;
 ---
 
 <header>
-  <div class="fb items-center">
-    <img src="/pwa-192.png" width="60" height="60"/>
-    <Themetoggle />
+  <div class={title==='首页'?'is-home title':'title'}>
+    {title}
   </div>
-  <div class="fi mt-2">
-    <span class="gpt-title">Huhangxiaozhi</span>
-    <span class="gpt-subtitle">Demo</span>
-  </div>
-  <p mt-1 op-60>Based on AllAsLLM API ({model}).</p>
 </header>
