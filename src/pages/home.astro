@@ -1,7 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro'
 import '../assetcs/css/home.css'
-import Button from '@/components/Button.astro';
 ---
 
 <Layout title="首页">
@@ -16,6 +15,15 @@ import Button from '@/components/Button.astro';
       <div class="desc">护航小智的核心驱动力是一个经过专业微调的
         国产大模型，它在国内安全合规的基础上开发，
         确保了操作的安全性和数据的隐私性。</div>
-        <Button title={'打开小智'}></Button>
+        <div id="home-open-btn" class="button">
+          打开小智
+        </div>
     </div>
 </Layout>
+
+<script>
+  const button = document.getElementById('home-open-btn')
+  button.addEventListener('click',()=>{
+    window.location.href = '/role'
+  })
+</script>
