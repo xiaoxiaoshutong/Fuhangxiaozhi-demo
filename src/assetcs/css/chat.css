@@ -1,0 +1,83 @@
+.chat .role-info{
+  background: #F5F6F9;
+  border-radius: 0.213rem;
+  width: 9.04rem;
+  margin: 0.32rem auto 0;
+  padding: 0.213rem 0.32rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.chat .role-info .left,.right{
+  display: flex;
+  align-items: center;
+}
+
+.chat .role-info .left img{
+  width: 1.28rem;
+  height: 1.28rem;
+}
+
+.chat .role-info .left span{
+  font-size: 0.373rem;
+  font-weight: bold;
+  color: #222222;
+  line-height: 1.28rem;
+  padding-left: 0.32rem;
+}
+
+.chat .role-info .right img{
+  width: 0.426rem;
+  height: 0.426rem;
+}
+
+.chat .role-info .right span{
+  font-size: 0.32rem;
+  color: #4E6EF2;
+  line-height: 1.28rem;
+  padding-right: 0.213rem;
+}
+
+.chat .welcome{
+  background: #F5F6F9;
+  border-radius: 0.213rem;
+  width: 9.04rem;
+  margin: 0 auto;
+  padding: 0.426rem;
+  font-size: 0.373rem;
+  color: #222222;
+  line-height: 0.64rem;
+  margin-top: 0.48rem;
+  position: relative;
+}
+
+.chat .welcome img{
+  width: 0.866rem;
+  height: 0.4rem;
+  position: absolute;
+  top: -0.4rem;
+  left: 25%;
+}
+.chat .user-style{
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 0.48rem;
+}
+.chat .user-style .sanjiao{
+  transform: translateY(0.28rem);
+  width: 0;
+  height: 0;
+  border-left: 0.15rem solid #4E6EF2;
+  border-top: 0.15rem solid #4E6EF2;
+  border-right: 0.15rem  solid transparent;
+  border-bottom: 0.15rem  solid transparent;
+}
+.chat .user-style .content{
+  background: #4E6EF2;
+  border-radius: 0.213rem;
+  padding: 0.32rem;
+  font-size: 0.373rem;
+  color: #FFFFFF;
+  max-width: 6.986rem;
+  word-break: break-all;
+}
