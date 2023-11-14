@@ -69,6 +69,7 @@ import banner from '../assetcs/images/banner.mp4'
   const version = document.getElementById('version')
   const roleMain = document.getElementById('role-main')
   const characterUl = document.getElementById('character-ul')
+  const saveBtn = document.getElementById('save-btn')
   // 选择版本
   version.addEventListener('click',(e)=>{
     console.log(e.target)
@@ -128,6 +129,12 @@ import banner from '../assetcs/images/banner.mp4'
     characterUl.appendChild(frag)
   }
   
+  // 保存设置
+  saveBtn.addEventListener('click',()=>{
+    window.sessionStorage.setItem('role',role)
+    window.sessionStorage.setItem('character',character)
+    window.location.href = '/chat'
+  })
   // 初始化页面
   function init(){
     // 初始化角色
