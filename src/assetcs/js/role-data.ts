@@ -8,6 +8,7 @@ const data = [
       avatar: baby,
       name: '魔法宝贝',
       characterName: '古灵精怪',
+      roleName:'baby',
       welcome:
         'HI!我是您的魔法宝贝，我有许多许多的魔法，不管您有多少问题，我都会魔法帮你解决问题',
       character: `system_prompt_text = (
@@ -22,6 +23,7 @@ const data = [
       avatar: baby,
       name: '魔法宝贝',
       characterName: '娇小可爱',
+      roleName:'baby',
       welcome:
         'HI!我是您的魔法宝贝，我有许多许多的魔法，不管您有多少问题，我都会魔法帮你解决问题',
       character: `system_prompt_text = (
@@ -36,6 +38,7 @@ const data = [
       avatar: baby,
       name: '魔法宝贝',
       characterName: '一本正经',
+      roleName:'baby',
       welcome:
         'HI!我是您的魔法宝贝，我有许多许多的魔法，不管您有多少问题，我都会魔法帮你解决问题',
       character: `system_prompt_text = (
@@ -50,6 +53,7 @@ const data = [
       avatar: baby,
       name: '魔法宝贝',
       characterName: '脑洞大开',
+      roleName:'baby',
       welcome:
         'HI!我是您的魔法宝贝，我有许多许多的魔法，不管您有多少问题，我都会魔法帮你解决问题',
       character: `system_prompt_text = (
@@ -66,6 +70,7 @@ const data = [
       avatar: sister,
       name: '心灵姐姐',
       characterName: '心事姐妹',
+      roleName:'sister',
       welcome:
         'HI!我是您的魔法宝贝，我有许多许多的魔法，不管您有多少问题，我都会魔法帮你解决问题',
       character: `system_prompt_text = (
@@ -80,6 +85,7 @@ const data = [
       avatar: sister,
       name: '心灵姐姐',
       characterName: '情感闺蜜',
+      roleName:'sister',
       welcome:
         'HI!我是您的心灵姐姐，有什么心情不好等问题都可以向姐姐倾诉您的心事',
       character: `system_prompt_text = (
@@ -94,6 +100,7 @@ const data = [
       avatar: sister,
       name: '心灵姐姐',
       characterName: '心灵导师',
+      roleName:'sister',
       welcome:
         'HI!我是您的心灵姐姐，有什么心情不好等问题都可以向姐姐倾诉您的心事',
       character: `system_prompt_text = (
@@ -108,6 +115,7 @@ const data = [
       avatar: sister,
       name: '心灵姐姐',
       characterName: '邻里姐姐',
+      roleName:'sister',
       welcome:
         'HI!我是您的心灵姐姐，有什么心情不好等问题都可以向姐姐倾诉您的心事',
       character: `system_prompt_text = (
@@ -124,6 +132,7 @@ const data = [
       avatar: consultant,
       name: '家庭顾问',
       characterName: '和谐使者',
+      roleName:'consultant',
       welcome:
         'HI!我是您的家庭顾问，家庭这方面的问题，我可提供专业的建议和指导喔',
       character: `system_prompt_text = (
@@ -138,6 +147,7 @@ const data = [
       avatar: consultant,
       name: '家庭顾问',
       characterName: '家庭智囊',
+      roleName:'consultant',
       welcome:
         'HI!我是您的家庭顾问，家庭这方面的问题，我可提供专业的建议和指导喔',
       character: `system_prompt_text = (
@@ -152,6 +162,7 @@ const data = [
       avatar: consultant,
       name: '家庭顾问',
       characterName: '家园顾问',
+      roleName:'consultant',
       welcome:
         'HI!我是您的家庭顾问，家庭这方面的问题，我可提供专业的建议和指导喔',
       character: `system_prompt_text = (
@@ -166,6 +177,7 @@ const data = [
       avatar: consultant,
       name: '家庭顾问',
       characterName: '别人爸爸',
+      roleName:'consultant',
       welcome:
         'HI!我是您的家庭顾问，家庭这方面的问题，我可提供专业的建议和指导喔',
       character: `system_prompt_text = (
