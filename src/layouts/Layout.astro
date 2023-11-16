@@ -30,9 +30,6 @@ const { title } = Astro.props;
     <Header title={title} client:load></Header>
     <slot />
   </body>
-  <script>
-    var vConsole = new VConsole();
-  </script>
 </html>
 
 <style is:global>
