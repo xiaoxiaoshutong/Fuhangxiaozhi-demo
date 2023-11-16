@@ -1,0 +1,106 @@
+  #character-ul{
+    display: flex;
+    justify-content: space-between;
+  }
+  #character-ul li {
+    width: 2.133rem;
+    line-height: 1.173rem;
+    background: #F5F6F9;
+    border-radius: 0.213rem;
+    border: 2px solid #F5F6F9;
+    overflow: hidden;
+    font-size: 0.373rem;
+    color: #222222;
+    text-align: center;
+  }
+  .role .version{
+    border-radius: 0.533rem;
+    width: 7.866rem;
+    background-color: #F5F6F9;
+    padding: 0.16rem 0.32rem;
+    margin: 0.32rem auto 0.64rem;
+    /* border: 1px solid red; */
+    display: flex;
+  }
+  .role .version-item{
+    padding: 0.213rem;
+    width: 3.466rem;
+    text-align: center;
+  }
+  .role .version-item.active{
+    background-color: #fff;
+    border-radius: 0.533rem;
+  }
+  .role .version-item.active .version-text1{
+    color: #4E6EF2;
+  }
+  .role .version-text1{
+    font-size: 0.373rem;
+    font-weight: bold;
+    color: #222222;
+    line-height: 0.64rem;
+  }
+  .role .version-text2{
+    font-size: 0.32rem;
+    font-weight: 400;
+    color: #666666;
+    line-height: 0.64rem;
+  }
+  .role .gif{
+    width: 9.04rem;
+    margin: 0 auto 0.64rem;
+    /* height: 3.866rem; */
+    /* background-color: red; */
+    border-radius: 0.533rem;
+    overflow: hidden;
+  }
+  .gif video{
+    width: 100%;
+  }
+  .role .role-title{
+    font-size: 0.48rem;
+    font-weight: bold;
+    color: #222222;
+    line-height: 0.64rem;
+    padding: 0 0.48rem;
+  }
+  .role .role-main{
+    padding: 0 0.48rem;
+    margin: 0.32rem 0 1.28rem;
+    display: flex;
+    justify-content: space-between;
+  }
+  .role .main-item{
+    position: relative;
+    width: 2.826rem;
+    height: 3.466rem;
+    border-radius: 0.426rem;
+    padding: 0.5333rem 0;
+    text-align: center;
+    background: #F5F6F9;
+    border: 2px solid #F5F6F9;
+  }
+  .role .main-item img{
+    margin: 0 auto;
+    width: 1.44rem;
+    height: 1.44rem;
+  }
+  .role .role-name{
+    margin-top: 0.373rem;
+    font-size: 0.373rem;
+    font-weight: bold;
+    color: #222222;
+    line-height: 0.64rem;
+  }
+  .role-modal{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width:100%;
+    height: 100%;
+    z-index: 100;
+  }
+  .character-opt{
+    margin: 0.32rem 0 1.493rem;
+    padding: 0 0.48rem;
+  }

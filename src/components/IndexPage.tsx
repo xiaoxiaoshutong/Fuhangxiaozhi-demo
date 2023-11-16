@@ -1,5 +1,3 @@
-import '../assetcs/css/dialog.css'
-
 export default () => {
   const open=()=>{
     console.log(111111111111111)
