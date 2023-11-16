@@ -9,6 +9,7 @@ import sister from '../assetcs/images/sister.png'
 import consultant from '../assetcs/images/consultant.png'
 import clear from '../assetcs/images/clear.png'
 import send from '../assetcs/images/send.png'
+import Dialog from '../components/dialog'
 
 export default () => {
   let inputRef: HTMLInputElement
@@ -174,6 +175,7 @@ export default () => {
           <img src={send} alt="" />
         </div>
       </div>
+      {/* <Dialog show={true}></Dialog> */}
     </div>
   )
 }
