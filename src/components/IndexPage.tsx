@@ -1,6 +1,5 @@
 export default () => {
   const open=()=>{
-    console.log(111111111111111)
     window.location.href = '/role'
   }
   return (
