@@ -1,29 +1,9 @@
 ---
 import Layout from '../layouts/Layout.astro'
 import '../assetcs/css/home.css'
+import IndexPage from '@/components/IndexPage';
 ---
 
 <Layout title="首页">
-  <div class="home">
-      <div class="home-top">
-      </div>
-      <div class="avatar"></div>
-      <div class="info">
-        <div class="text1">护航小智</div>
-        <div class="text2">用AI技术，帮您护航</div>
-      </div>
-      <div class="desc">护航小智的核心驱动力是一个经过专业微调的
-        国产大模型，它在国内安全合规的基础上开发，
-        确保了操作的安全性和数据的隐私性。</div>
-        <div id="home-open-btn" class="button">
-          打开小智
-        </div>
-    </div>
+  <IndexPage client:load></IndexPage>
 </Layout>
-
-<script>
-  const button = document.getElementById('home-open-btn')
-  button.addEventListener('click',()=>{
-    window.location.href = '/role'
-  })
-</script>
