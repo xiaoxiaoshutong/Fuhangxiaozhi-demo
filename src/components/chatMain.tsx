@@ -29,13 +29,25 @@ export default () => {
 
   onMount(() => {
     try {
-      const role = sessionStorage.getItem('role')
-      const character = sessionStorage.getItem('character')
+      const { role, character } = saveData()
+      console.log(role, character)
       setRoleInfo(roleData[role][character])
     } catch (err) {
       console.log(err)
     }
   })
+  const saveData=(role?)=>{
+    let _role = Number(sessionStorage.getItem('role'))
+    if(role!==undefined){
+      console.log('执行了这里吗')
+      _role = role
+    }
+    const babyCharacter = Number(sessionStorage.getItem('babyCharacter'))
+    const sisterCharacter = Number(sessionStorage.getItem('sisterCharacter'))
+    const consultantCharacter = Number(sessionStorage.getItem('consultantCharacter'))
+    const character = _role===0?babyCharacter:_role===1?sisterCharacter:consultantCharacter
+    return {role:_role,character}
+  }
   const instantToBottom = () => {
     dialogRef.scrollTo({ top: dialogRef.scrollHeight, behavior: 'instant' })
   }
@@ -149,8 +161,10 @@ export default () => {
     setCurrentRole(value)
   }
   const handleSelect=()=>{
-    setRoleInfo(roleData[currentRole()][0])
+    const { role,character } = saveData(currentRole())
+    setRoleInfo(roleData[currentRole()][character])
     setShowSelectRole(false)
+    setMessageList([])
   }
   return (
     <div class="chat-warpper">

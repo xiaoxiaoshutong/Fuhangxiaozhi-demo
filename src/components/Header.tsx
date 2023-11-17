@@ -1,19 +1,23 @@
 import '../assetcs/css/header.css'
-import { Show } from 'solid-js'
-import close from '../assetcs/images/close.png'
+import { Show,onMount } from 'solid-js'
+import browser from '../utils/browser'
 
 interface Props {
-  title:string 
+  title: string
 }
-export default ({title}:Props) => {
-  const handleClose=()=>{
+export default ({ title }: Props) => {
+  onMount(()=>{
+    console.log(browser)
+  })
+  const handleClose = () => {
     window.location.href = '/'
   }
   return (
-    <header>
-  <div class={title==='首页'?'is-home title':'title'}>
-    {title}
-  </div>
-</header>
+    <Show when={!browser.weixin}>
+          <header>
+      <div class={title === '首页' ? 'is-home title' : 'title'}>{title}</div>
+    </header>
+    </Show>
+
   )
 }

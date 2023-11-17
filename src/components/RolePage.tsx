@@ -6,8 +6,11 @@ import consultant from '../assetcs/images/consultant.png'
 import banner from '../assetcs/images/banner.mp4'
 
 export default () => {
+  console.log(321312412412)
   const [role,setRole]=createSignal(0)
-  const [character,setCharacter] = createSignal(0)
+  const [babyCharacter,setBabyCharacter]=createSignal(0)
+  const [sisterCharacter,setSisterCharacter]=createSignal(0)
+  const [consultantCharacter,setConsultantCharacter]=createSignal(0)
   const characterList = [
     ['古灵精怪','娇小可爱','一本正经','脑洞大开'],
     ['心事姐妹','情感闺蜜','心灵导师','邻里姐姐'],
@@ -19,11 +22,22 @@ export default () => {
     setCurrentCharacterList(characterList[value])
   }
   const characterClick = (value:number)=>{
-    setCharacter(value)
+    const _role=role()
+    if(_role===0){
+      setBabyCharacter(value)
+    }
+    if(_role===1){
+      setSisterCharacter(value)
+    }
+    if(_role===2){
+      setConsultantCharacter(value)
+    }
   }
   const save=()=>{
     window.sessionStorage.setItem('role', role()+'')
-    window.sessionStorage.setItem('character', character()+'')
+    window.sessionStorage.setItem('babyCharacter', babyCharacter()+'')
+    window.sessionStorage.setItem('sisterCharacter', sisterCharacter()+'')
+    window.sessionStorage.setItem('consultantCharacter', consultantCharacter()+'')
     window.location.href = '/chat'
   }
   return (
@@ -70,9 +84,20 @@ export default () => {
       <ul id="character-ul">
         {
           currentCharacterList().map((elem,index)=>{
-            return (
-              <li style={character()===index?'border-color:#4E6EF2':''} onclick={()=>{characterClick(index)}}>{elem}</li>
-            )
+            if(role()===0){
+              return (
+                <li style={babyCharacter()===index?'border-color:#4E6EF2':''} onclick={()=>{characterClick(index)}}>{elem}</li>
+              )
+            }else if(role()===1){
+              return (
+                <li style={sisterCharacter()===index?'border-color:#4E6EF2':''} onclick={()=>{characterClick(index)}}>{elem}</li>
+              )
+            }else{
+              return (
+                <li style={consultantCharacter()===index?'border-color:#4E6EF2':''} onclick={()=>{characterClick(index)}}>{elem}</li>
+              )
+            }
+
           })
         }
       </ul>
