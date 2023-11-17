@@ -1,10 +1,12 @@
-import { createSignal,onMount } from 'solid-js'
+import { createSignal,onMount,Show } from 'solid-js'
 import '../assetcs/css/role.css'
+import babygif from '../assetcs/images/baby.gif'
 import baby from '../assetcs/images/baby.png'
 import sister from '../assetcs/images/sister.png'
+import sistergif from '../assetcs/images/sister.gif'
 import consultant from '../assetcs/images/consultant.png'
-import banner from '../assetcs/images/banner.mp4'
-import poster from '../assetcs/images/poster.png'
+import consultantgif from '../assetcs/images/consultant.gif'
+import banner from '../assetcs/images/banner.gif'
 
 export default () => {
   let video: HTMLVideoElement
@@ -33,7 +35,7 @@ export default () => {
   }
   const [currentCharacterList,setCurrentCharacterList ] = createSignal(characterList[0])
   const roleClick = (value:number)=>{
-    playVideo()
+    // playVideo()
     setRole(value)
     setCurrentCharacterList(characterList[value])
   }
@@ -69,43 +71,31 @@ export default () => {
       </div>
     </div>
     <div class="gif">
-      <video
-          ref={video!}
-          width="100%"
-          height="100%"
-          loop
-          muted
-          style="object-fit:fill"
-          webkit-playsinline="true"  
-          x-webkit-airplay="true"
-          playsinline
-          x5-video-player-type="h5"
-          x5-video-orientation="h5"
-          x5-video-player-fullscreen="true"
-          poster={poster}
-      >
-        <source src={banner} type="video/mp4" />
-      </video>
+      <img src={banner} alt="" />
+
     </div>
     <div class="role-title">选择助手：</div>
     <div class="role-main" id="role-main">
       <div class="main-item" onclick={()=>{roleClick(0)}} style={role()===0?'border-color:#4E6EF2':''}>
         <div class="avatar">
-          <img src={baby} alt=""/>
+            <img src={babygif} alt="" class={role()!==0?'display-none':''}/>
+            <img src={baby} alt="" class={role()===0?'display-none':''}/>
         </div>
         <div class="role-name">魔法宝贝</div>
         <div class="role-modal" data-role="0"></div>
       </div>
       <div class="main-item" onclick={()=>{roleClick(1)}} style={role()===1?'border-color:#4E6EF2':''} >
         <div class="avatar">
-          <img src={sister} alt=""/>
+            <img src={sistergif} alt="" class={role()!==1?'display-none':''}/>
+            <img src={sister} alt="" class={role()===1?'display-none':''}/>
         </div>
         <div class="role-name">心灵姐姐</div>
         <div class="role-modal" data-role="1"></div>
       </div>
       <div class="main-item" onclick={()=>{roleClick(2)}} style={role()===2?'border-color:#4E6EF2':''}>
         <div class="avatar">
-          <img src={consultant} alt=""/>
+            <img src={consultantgif} alt="" class={role()!==2?'display-none':''}/>
+            <img src={consultant} alt="" class={role()===2?'display-none':''}/>
         </div>
         <div class="role-name">家庭顾问</div>
         <div class="role-modal" data-role="2"></div>

@@ -83,7 +83,9 @@
     background: #F5F6F9;
     border: 2px solid #F5F6F9;
   }
+
   .role .main-item img{
+    border-radius: 0.4rem;
     margin: 0 auto;
     width: 1.44rem;
     height: 1.44rem;
