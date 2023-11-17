@@ -13,6 +13,9 @@
     color: #222222;
     text-align: center;
   }
+  .role{
+    padding-bottom: 2.186rem;
+  }
   .role .version{
     border-radius: 0.533rem;
     width: 7.866rem;
@@ -104,3 +107,12 @@
     margin: 0.32rem 0 1.493rem;
     padding: 0 0.48rem;
   }
+  #save-btn{
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    padding: 0.426rem 0;
+    background-color: #fff;
+  }
+
+  

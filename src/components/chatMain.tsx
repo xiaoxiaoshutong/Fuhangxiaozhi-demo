@@ -11,6 +11,7 @@ import consultant from '../assetcs/images/consultant.png'
 import clear from '../assetcs/images/clear.png'
 import send from '../assetcs/images/send.png'
 import close from '../assetcs/images/close.png'
+import browser from '../utils/browser'
 
 export default () => {
   let inputRef: HTMLInputElement
@@ -78,7 +79,7 @@ export default () => {
       })
       const timestamp = Date.now()
       setLoading(true)
-      const response = await fetch('https://www.alphaedtech.com/api/generate', {
+      const response = await fetch('/api/generate', {
         method: 'POST',
         body: JSON.stringify({
           messages: requestMessageList,
@@ -166,9 +167,22 @@ export default () => {
     setShowSelectRole(false)
     setMessageList([])
   }
+
+  const calcHeight=()=>{
+    let _class='chat '
+    // 如果是微信
+    if(browser.versions.weixin){
+      _class+='wechat '
+    }else if(browser.versions.webKit&&browser.versions.iPhone){
+      _class+='iphone '
+    }
+    // 如果是safari
+
+    return _class
+  }
   return (
     <div class="chat-warpper">
-      <div class="chat">
+      <div class={calcHeight()}>
         <div class="role-info">
           <div class="left">
             <img src={roleInfo().avatar} alt="" />

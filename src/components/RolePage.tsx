@@ -1,12 +1,14 @@
-import { createSignal } from 'solid-js'
+import { createSignal,onMount } from 'solid-js'
 import '../assetcs/css/role.css'
 import baby from '../assetcs/images/baby.png'
 import sister from '../assetcs/images/sister.png'
 import consultant from '../assetcs/images/consultant.png'
 import banner from '../assetcs/images/banner.mp4'
+import poster from '../assetcs/images/poster.png'
 
 export default () => {
-  console.log(321312412412)
+  let video: HTMLVideoElement
+  // VConsole 默认会挂载到 `window.VConsole` 上
   const [role,setRole]=createSignal(0)
   const [babyCharacter,setBabyCharacter]=createSignal(0)
   const [sisterCharacter,setSisterCharacter]=createSignal(0)
@@ -16,8 +18,22 @@ export default () => {
     ['心事姐妹','情感闺蜜','心灵导师','邻里姐姐'],
     ['和谐使者','家庭智囊','家园顾问','别人爸爸']
   ]
+  onMount(()=>{
+    video.addEventListener("click", playVideo);
+    video.muted = true
+    document.addEventListener("touchstart", function() {
+      video.play();
+    });
+    playVideo()
+  })
+  const playVideo=()=>{
+    if (video.paused) {
+      video.play();
+    }
+  }
   const [currentCharacterList,setCurrentCharacterList ] = createSignal(characterList[0])
   const roleClick = (value:number)=>{
+    playVideo()
     setRole(value)
     setCurrentCharacterList(characterList[value])
   }
@@ -53,7 +69,23 @@ export default () => {
       </div>
     </div>
     <div class="gif">
-      <video src={banner} autoplay loop></video>
+      <video
+          ref={video!}
+          width="100%"
+          height="100%"
+          loop
+          muted
+          style="object-fit:fill"
+          webkit-playsinline="true"  
+          x-webkit-airplay="true"
+          playsinline
+          x5-video-player-type="h5"
+          x5-video-orientation="h5"
+          x5-video-player-fullscreen="true"
+          poster={poster}
+      >
+        <source src={banner} type="video/mp4" />
+      </video>
     </div>
     <div class="role-title">选择助手：</div>
     <div class="role-main" id="role-main">
@@ -102,8 +134,10 @@ export default () => {
         }
       </ul>
     </div>
-    <div id="save-btn" class="button" style="width:5.333rem" onclick={save}>
-      保存设置
+    <div id="save-btn">
+      <div class="button" style="width:5.333rem" onclick={save}>
+        保存设置
+      </div>
     </div>
   </div>  
   )

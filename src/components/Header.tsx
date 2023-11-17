@@ -7,13 +7,17 @@ interface Props {
 }
 export default ({ title }: Props) => {
   onMount(()=>{
-    console.log(browser)
+    setTimeout(()=>{
+      new window.VConsole()
+      console.log(browser)
+      console.log(window.navigator.userAgent)
+      },3000)
   })
   const handleClose = () => {
     window.location.href = '/'
   }
   return (
-    <Show when={!browser.weixin}>
+    <Show when={!browser.versions.weixin}>
           <header>
       <div class={title === '首页' ? 'is-home title' : 'title'}>{title}</div>
     </header>

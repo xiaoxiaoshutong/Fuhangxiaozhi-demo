@@ -3,6 +3,12 @@
   flex-direction: column;
   height: calc(100vh - 1.17rem);
 }
+.wechat{
+  height: 100vh;
+}
+.iphone{
+  height: calc(100vh - 4rem);
+}
 
 .chat .role-info{
   background: #F5F6F9;
