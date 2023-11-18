@@ -1,4 +1,5 @@
 import { createSignal, onMount, Show } from 'solid-js'
+import { useClipboard } from 'solidjs-use'
 import roleData from '../assetcs/js/role-data'
 import { generateSignature } from '@/utils/auth'
 import '../assetcs/css/chat.css'
@@ -12,6 +13,12 @@ import clear from '../assetcs/images/clear.png'
 import send from '../assetcs/images/send.png'
 import close from '../assetcs/images/close.png'
 import browser from '../utils/browser'
+import MarkdownIt from 'markdown-it'
+import mdKatex from 'markdown-it-katex'
+import mdHighlight from 'markdown-it-highlightjs'
+
+
+
 
 export default () => {
   let inputRef: HTMLInputElement
@@ -23,6 +30,8 @@ export default () => {
   const [showDialog, setShowDialog] = createSignal(false)
   const [showSelectRole, setShowSelectRole] = createSignal(false)
   const [dialogSubTitle, setDialogSubTitle] = createSignal('您要取消这次提问吗?')
+  const [source] = createSignal('')
+  const { copied } = useClipboard({ source, copiedDuring: 1000 })
   const maxHistoryMessages = parseInt(
     import.meta.env.PUBLIC_MAX_HISTORY_MESSAGES || '9'
   )
@@ -31,7 +40,6 @@ export default () => {
   onMount(() => {
     try {
       const { role, character } = saveData()
-      console.log(role, character)
       setRoleInfo(roleData[role][character])
     } catch (err) {
       console.log(err)
@@ -79,7 +87,7 @@ export default () => {
       })
       const timestamp = Date.now()
       setLoading(true)
-      const response = await fetch('/api/generate', {
+      const response = await fetch('https://www.alphaedtech.com/api/generate', {
         method: 'POST',
         body: JSON.stringify({
           messages: requestMessageList,
@@ -126,6 +134,7 @@ export default () => {
       ])
       instantToBottom()
     } catch (err) {
+      setLoading(false)
       console.log(err)
     }
   }
@@ -180,6 +189,26 @@ export default () => {
 
     return _class
   }
+
+  // makedown处理
+  const htmlString = (message) => {
+    const md = MarkdownIt({
+      linkify: true,
+      breaks: true,
+    }).use(mdKatex).use(mdHighlight)
+    const fence = md.renderer.rules.fence!
+    md.renderer.rules.fence = (...args) => {
+      const rawCode = fence(...args)
+      return `<div relative>${rawCode}</div>`
+    }
+    if (typeof message === 'function')
+      return md.render(message())
+    else if (typeof message === 'string')
+    console.log(md.render(message))
+      return md.render(message)
+
+    return ''
+  }
   return (
     <div class="chat-warpper">
       <div class={calcHeight()}>
@@ -202,7 +231,7 @@ export default () => {
             if (elem.role === 'user') {
               return (
                 <div class="user-style">
-                  <div class="content">{elem.content}</div>
+                  <div class="content" innerHTML={htmlString(elem.content)}></div>
                   <div class="sanjiao"></div>
                 </div>
               )
@@ -221,7 +250,7 @@ export default () => {
                     </Show>
                   </div>
                   <div class="sanjiao"></div>
-                  <div class="content">{elem.content}</div>
+                  <div class="content" innerHTML={htmlString(elem.content)}></div>
                 </div>
               )
             }

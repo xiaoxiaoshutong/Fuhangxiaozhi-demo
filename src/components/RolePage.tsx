@@ -20,22 +20,8 @@ export default () => {
     ['心事姐妹','情感闺蜜','心灵导师','邻里姐姐'],
     ['和谐使者','家庭智囊','家园顾问','别人爸爸']
   ]
-  onMount(()=>{
-    video.addEventListener("click", playVideo);
-    video.muted = true
-    document.addEventListener("touchstart", function() {
-      video.play();
-    });
-    playVideo()
-  })
-  const playVideo=()=>{
-    if (video.paused) {
-      video.play();
-    }
-  }
   const [currentCharacterList,setCurrentCharacterList ] = createSignal(characterList[0])
   const roleClick = (value:number)=>{
-    // playVideo()
     setRole(value)
     setCurrentCharacterList(characterList[value])
   }
