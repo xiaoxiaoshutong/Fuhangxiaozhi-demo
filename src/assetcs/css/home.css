@@ -8,12 +8,11 @@
   position: relative;
 }
 .home .avatar{
-  margin: 0.7rem auto 0;
+  margin: 0.7rem auto 0.64rem;
   width: 3.04rem;
   height: 1.44rem;
   background-image: url('../images/avatar.png');
   background-size: 100% 100%;
-  border: 2px solid #fff;
 }
 .home .info .text1{
   text-align: center;
@@ -30,13 +29,35 @@
 }
 
 .home .desc{
-  background-color: #f5f6f9;
+  /* background-color: #f5f6f9; */
   /* background-color: red; */
+  background-image: url('../images/dialog-light.png');
+  background-size: contain;
+  background-repeat: no-repeat;
   font-size: 0.373rem;
   color: #222222;
   line-height: 0.64rem;
   border-radius: 0.213rem;
   width: 8.4rem;
-  padding: 0.426rem 0.266rem;
+  padding: 0.8rem 0.266rem 0.426rem;
   margin: 1rem auto 1.493rem;
+  height: 3.04rem;
+}
+
+@media (prefers-color-scheme:dark){
+  .home .avatar{
+    background-image: url('../images/avatar-dark.png');
+  }
+  .home .info .text1{
+    color: #fff;
+  }
+  .home .info .text2{
+    text-align: center;
+    font-size: 0.32rem;
+    color: #C4C4D6 ;
+  }
+  .home .desc{
+    background-image: url('../images/dialog-dark.png');
+    color: #fff;
+  }
 }

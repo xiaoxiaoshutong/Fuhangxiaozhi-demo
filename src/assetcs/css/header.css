@@ -26,3 +26,9 @@
   top: 50%;
   transform: translateY(-0.426rem);
 }
+@media (prefers-color-scheme:dark){
+  .title{
+    background-color: #212129;
+    color: #fff;
+  }
+}

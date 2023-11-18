@@ -7,11 +7,14 @@
     line-height: 1.173rem;
     background: #F5F6F9;
     border-radius: 0.213rem;
-    border: 2px solid #F5F6F9;
+    border: 2px solid transparent;
     overflow: hidden;
     font-size: 0.373rem;
     color: #222222;
     text-align: center;
+  }
+  #character-ul .character-active{
+    border-color: #4E6EF2;
   }
   .role{
     padding-bottom: 2.186rem;
@@ -81,8 +84,12 @@
     padding: 0.5333rem 0;
     text-align: center;
     background: #F5F6F9;
-    border: 2px solid #F5F6F9;
+    border: 2px solid transparent;
   }
+  .role .role-main-avtive{
+    border-color: #4E6EF2;
+  }
+
 
   .role .main-item img{
     border-radius: 0.4rem;
@@ -117,4 +124,45 @@
     background-color: #fff;
   }
 
-  
+  @media (prefers-color-scheme:dark){
+    .role .version{
+      background-color: #32343E;
+    }
+    .role .version-item.active{
+      background-color: #383B46 ;
+    }
+    .role .version-text2{
+      color: #8E8E9D ;
+    }
+    .role .version-text1{
+      color: #8E8E9D ;
+    }
+    .role .version-item.active .version-text1{
+      color: #fff;
+    }
+    .role .role-title{
+      color: #fff;
+    }
+    .role .main-item{
+      background-color: #383B46;
+    }
+    .role .role-name{
+      color: #fff;
+    }
+    .role .role-main-avtive{
+      border-color: #fff;
+    }
+    #character-ul .character-active{
+      border-color: #fff;
+    }
+    #character-ul li{
+      background-color: #32343E;
+      color: #fff;
+    }
+    #save-btn{
+      background-color: #32343E;
+    }
+    .role{
+      background-color: #212129 ;
+    }
+  }

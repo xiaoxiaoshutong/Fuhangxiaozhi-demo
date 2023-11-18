@@ -5,7 +5,6 @@ import { generateSignature } from '@/utils/auth'
 import '../assetcs/css/chat.css'
 import '../assetcs/css/dialog.css'
 import arrow from '../assetcs/images/arrow.png'
-import top from '../assetcs/images/top.png'
 import baby from '../assetcs/images/baby.png'
 import sister from '../assetcs/images/sister.png'
 import consultant from '../assetcs/images/consultant.png'
@@ -213,8 +212,7 @@ export default () => {
       return `<div relative>${rawCode}</div>`
     }
     if (typeof message === 'function') return md.render(message())
-    else if (typeof message === 'string') console.log(md.render(message))
-    return md.render(message)
+    else if (typeof message === 'string') return md.render(message)
 
     return ''
   }
@@ -232,10 +230,7 @@ export default () => {
           </div>
         </div>
         <div class="dialog" ref={dialogRef!}>
-          <div class="welcome">
-            {roleInfo().welcome}
-            <img src={top} alt="" />
-          </div>
+          <div class="welcome">{roleInfo().welcome}</div>
           {messageList().map((elem) => {
             if (elem.role === 'user') {
               return (
@@ -262,7 +257,10 @@ export default () => {
                     </Show>
                   </div>
                   <div class="sanjiao"></div>
-                  <div class="content" innerHTML={htmlString(elem.content)}></div>
+                  <div
+                    class="content"
+                    innerHTML={htmlString(elem.content)}
+                  ></div>
                 </div>
               )
             }

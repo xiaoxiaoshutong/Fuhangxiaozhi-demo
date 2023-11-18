@@ -62,7 +62,7 @@ export default () => {
     </div>
     <div class="role-title">选择助手：</div>
     <div class="role-main" id="role-main">
-      <div class="main-item" onclick={()=>{roleClick(0)}} style={role()===0?'border-color:#4E6EF2':''}>
+      <div onclick={()=>{roleClick(0)}} class={role()===0?'main-item role-main-avtive':'main-item'}>
         <div class="avatar">
             <img src={babygif} alt="" class={role()!==0?'display-none':''}/>
             <img src={baby} alt="" class={role()===0?'display-none':''}/>
@@ -70,7 +70,7 @@ export default () => {
         <div class="role-name">魔法宝贝</div>
         <div class="role-modal" data-role="0"></div>
       </div>
-      <div class="main-item" onclick={()=>{roleClick(1)}} style={role()===1?'border-color:#4E6EF2':''} >
+      <div onclick={()=>{roleClick(1)}} class={role()===1?'main-item role-main-avtive':'main-item'} >
         <div class="avatar">
             <img src={sistergif} alt="" class={role()!==1?'display-none':''}/>
             <img src={sister} alt="" class={role()===1?'display-none':''}/>
@@ -78,7 +78,7 @@ export default () => {
         <div class="role-name">心灵姐姐</div>
         <div class="role-modal" data-role="1"></div>
       </div>
-      <div class="main-item" onclick={()=>{roleClick(2)}} style={role()===2?'border-color:#4E6EF2':''}>
+      <div onclick={()=>{roleClick(2)}} class={role()===2?'main-item role-main-avtive':'main-item'}>
         <div class="avatar">
             <img src={consultantgif} alt="" class={role()!==2?'display-none':''}/>
             <img src={consultant} alt="" class={role()===2?'display-none':''}/>
@@ -94,15 +94,15 @@ export default () => {
           currentCharacterList().map((elem,index)=>{
             if(role()===0){
               return (
-                <li style={babyCharacter()===index?'border-color:#4E6EF2':''} onclick={()=>{characterClick(index)}}>{elem}</li>
+                <li class={babyCharacter()===index?'character-active':''} onclick={()=>{characterClick(index)}}>{elem}</li>
               )
             }else if(role()===1){
               return (
-                <li style={sisterCharacter()===index?'border-color:#4E6EF2':''} onclick={()=>{characterClick(index)}}>{elem}</li>
+                <li class={sisterCharacter()===index?'character-active':''} onclick={()=>{characterClick(index)}}>{elem}</li>
               )
             }else{
               return (
-                <li style={consultantCharacter()===index?'border-color:#4E6EF2':''} onclick={()=>{characterClick(index)}}>{elem}</li>
+                <li class={consultantCharacter()===index?'character-active':''} onclick={()=>{characterClick(index)}}>{elem}</li>
               )
             }
 

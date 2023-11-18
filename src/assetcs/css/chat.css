@@ -52,16 +52,16 @@
 }
 
 .chat .welcome{
-  background: #F5F6F9;
+  background-image: url('../images/dialog-light.png');
+  background-size: cover;
+  background-repeat: no-repeat;
   border-radius: 0.213rem;
   width: 9.04rem;
-  margin: 0 auto;
-  padding: 0.426rem;
+  margin: 0.32rem auto;
+  padding: 0.8rem 0.426rem 0.426rem;
   font-size: 0.373rem;
   color: #222222;
   line-height: 0.64rem;
-  margin-top: 0.48rem;
-  position: relative;
 }
 
 .chat .welcome img{
@@ -129,7 +129,6 @@
   word-break: break-all;
 }
 .chat .dialog{
-  border-top: 1px solid #fff;
   flex: 1;
   overflow-y: auto;
   padding-bottom: 0.64rem;
@@ -183,4 +182,38 @@
   position: fixed;
   right: 0.64rem;
   top: 0.64rem;
+}
+
+@media (prefers-color-scheme:dark){
+  .chat{
+    background-color: #212129;
+  }
+  .chat .role-info{
+    background-color: #32343E;
+  }
+  .chat .role-info .left span{
+    color: #fff;
+  }
+  .chat .welcome{
+    background-image: url('../images/dialog-dark.png');
+    color: #fff;
+  }
+  .chat .system-style .sanjiao{
+    border-right: 0.15rem solid #32343E;
+    border-top: 0.15rem solid #32343E;
+  }
+  .chat .system-style .content{
+    background-color: #32343E;
+    color: #fff;
+  }
+  .chat .send-message{
+    background-color: #212129;
+    border-top: 1px solid #30303B;
+  }
+  .chat .send-message .input{
+    color: #fff;
+  }
+  .chat .send-message input{
+    background-color: #383B46;
+  }
 }
