@@ -17,9 +17,6 @@ import MarkdownIt from 'markdown-it'
 import mdKatex from 'markdown-it-katex'
 import mdHighlight from 'markdown-it-highlightjs'
 
-
-
-
 export default () => {
   let inputRef: HTMLInputElement
   let dialogRef: HTMLDivElement
@@ -29,7 +26,8 @@ export default () => {
   const [currentAssistantMessage, setCurrentAssistantMessage] = createSignal('')
   const [showDialog, setShowDialog] = createSignal(false)
   const [showSelectRole, setShowSelectRole] = createSignal(false)
-  const [dialogSubTitle, setDialogSubTitle] = createSignal('您要取消这次提问吗?')
+  const [dialogSubTitle, setDialogSubTitle] =
+    createSignal('您要取消这次提问吗?')
   const [source] = createSignal('')
   const { copied } = useClipboard({ source, copiedDuring: 1000 })
   const maxHistoryMessages = parseInt(
@@ -45,17 +43,23 @@ export default () => {
       console.log(err)
     }
   })
-  const saveData=(role?)=>{
+  const saveData = (role?) => {
     let _role = Number(sessionStorage.getItem('role'))
-    if(role!==undefined){
-      console.log('执行了这里吗')
+    if (role !== undefined) {
       _role = role
     }
     const babyCharacter = Number(sessionStorage.getItem('babyCharacter'))
     const sisterCharacter = Number(sessionStorage.getItem('sisterCharacter'))
-    const consultantCharacter = Number(sessionStorage.getItem('consultantCharacter'))
-    const character = _role===0?babyCharacter:_role===1?sisterCharacter:consultantCharacter
-    return {role:_role,character}
+    const consultantCharacter = Number(
+      sessionStorage.getItem('consultantCharacter')
+    )
+    const character =
+      _role === 0
+        ? babyCharacter
+        : _role === 1
+        ? sisterCharacter
+        : consultantCharacter
+    return { role: _role, character }
   }
   const instantToBottom = () => {
     dialogRef.scrollTo({ top: dialogRef.scrollHeight, behavior: 'instant' })
@@ -132,6 +136,7 @@ export default () => {
           content: currentAssistantMessage(),
         },
       ])
+      setCurrentAssistantMessage('')
       instantToBottom()
     } catch (err) {
       setLoading(false)
@@ -141,49 +146,53 @@ export default () => {
 
   let dialogType = ''
   const clearMessage = () => {
-    dialogType='clear'
+    dialogType = 'clear'
     setDialogSubTitle('您确定要清空当前聊天记录吗?')
     setShowDialog(true)
   }
 
-
-  const handleClose=()=>{
-    dialogType='out'
+  const handleClose = () => {
+    dialogType = 'out'
     setDialogSubTitle('您要取消这次提问吗??')
     setShowDialog(true)
   }
 
-  const handleClear=()=>{
-    if(dialogType==='clear'){
+  const handleClear = () => {
+    if (dialogType === 'clear') {
       setMessageList([])
-    }else{
-      window.location.href='/'
+    } else {
+      window.location.href = '/'
     }
     setShowDialog(false)
   }
-  const [currentRole,setCurrentRole] = createSignal(0)
-  const openSelectRole = ()=>{
+  const [currentRole, setCurrentRole] = createSignal(0)
+  const openSelectRole = () => {
     setShowSelectRole(true)
-    const role = roleInfo().roleName==='baby'?0:roleInfo().roleName==='sister'?1:2
+    const role =
+      roleInfo().roleName === 'baby'
+        ? 0
+        : roleInfo().roleName === 'sister'
+        ? 1
+        : 2
     setCurrentRole(role)
   }
-  const selectRole=(value)=>{
+  const selectRole = (value) => {
     setCurrentRole(value)
   }
-  const handleSelect=()=>{
-    const { role,character } = saveData(currentRole())
+  const handleSelect = () => {
+    const { role, character } = saveData(currentRole())
     setRoleInfo(roleData[currentRole()][character])
     setShowSelectRole(false)
     setMessageList([])
   }
 
-  const calcHeight=()=>{
-    let _class='chat '
+  const calcHeight = () => {
+    let _class = 'chat '
     // 如果是微信
-    if(browser.versions.weixin){
-      _class+='wechat '
-    }else if(browser.versions.webKit&&browser.versions.iPhone){
-      _class+='iphone '
+    if (browser.versions.weixin) {
+      _class += 'wechat '
+    } else if (browser.versions.webKit && browser.versions.iPhone) {
+      _class += 'iphone '
     }
     // 如果是safari
 
@@ -195,17 +204,17 @@ export default () => {
     const md = MarkdownIt({
       linkify: true,
       breaks: true,
-    }).use(mdKatex).use(mdHighlight)
+    })
+      .use(mdKatex)
+      .use(mdHighlight)
     const fence = md.renderer.rules.fence!
     md.renderer.rules.fence = (...args) => {
       const rawCode = fence(...args)
       return `<div relative>${rawCode}</div>`
     }
-    if (typeof message === 'function')
-      return md.render(message())
-    else if (typeof message === 'string')
-    console.log(md.render(message))
-      return md.render(message)
+    if (typeof message === 'function') return md.render(message())
+    else if (typeof message === 'string') console.log(md.render(message))
+    return md.render(message)
 
     return ''
   }
@@ -231,7 +240,10 @@ export default () => {
             if (elem.role === 'user') {
               return (
                 <div class="user-style">
-                  <div class="content" innerHTML={htmlString(elem.content)}></div>
+                  <div
+                    class="content"
+                    innerHTML={htmlString(elem.content)}
+                  ></div>
                   <div class="sanjiao"></div>
                 </div>
               )
@@ -255,9 +267,26 @@ export default () => {
               )
             }
           })}
-          <Show when={loading()}>
-            <div class="loading">{roleInfo().name}正在思考中...</div>
+          <Show when={currentAssistantMessage()}>
+            <div class="system-style">
+              <div class="avatar">
+                <Show when={roleInfo().roleName === 'baby'}>
+                  <img src={baby} alt="" />
+                </Show>
+                <Show when={roleInfo().roleName === 'sister'}>
+                  <img src={sister} alt="" />
+                </Show>
+                <Show when={roleInfo().roleName === 'consultant'}>
+                  <img src={consultant} alt="" />
+                </Show>
+              </div>
+              <div class="sanjiao"></div>
+              <div class="content">{currentAssistantMessage()}</div>
+            </div>
           </Show>
+          {/* <Show when={loading()}>
+            <div class="loading">{roleInfo().name}正在思考中...</div>
+          </Show> */}
         </div>
         <div class="send-message">
           <div class="clear" onclick={clearMessage}>
@@ -276,41 +305,77 @@ export default () => {
         </div>
       </div>
       <Show when={showDialog()}>
-      <div class="dialog-modal">
-        <div class="dialog-main">
-          <p class="modal-title">温馨提示</p>
-          <p class="sub-title">{dialogSubTitle()}</p>
-          <div class="modal-btn">
-            <div class="modal-btn-left" onclick={()=>{setShowDialog(false)}}>取消</div>
-            <div class="modal-btn-right" onclick={handleClear}>确定</div>
+        <div class="dialog-modal">
+          <div class="dialog-main">
+            <p class="modal-title">温馨提示</p>
+            <p class="sub-title">{dialogSubTitle()}</p>
+            <div class="modal-btn">
+              <div
+                class="modal-btn-left"
+                onclick={() => {
+                  setShowDialog(false)
+                }}
+              >
+                取消
+              </div>
+              <div class="modal-btn-right" onclick={handleClear}>
+                确定
+              </div>
+            </div>
           </div>
         </div>
-      </div>
       </Show>
       <Show when={showSelectRole()}>
-      <div class="dialog-modal">
-        <div class="dialog-main">
-          <p class="modal-title">切换角色</p>
-          <div class="modal-role">
-            <div class="modal-role-item" onclick={()=>{selectRole(0)}} style={currentRole()===0?'border-color:#4E6EF2':''}>
-              <img src={baby} alt="" />
-              <span>魔法宝贝</span>
+        <div class="dialog-modal">
+          <div class="dialog-main">
+            <p class="modal-title">切换角色</p>
+            <div class="modal-role">
+              <div
+                class="modal-role-item"
+                onclick={() => {
+                  selectRole(0)
+                }}
+                style={currentRole() === 0 ? 'border-color:#4E6EF2' : ''}
+              >
+                <img src={baby} alt="" />
+                <span>魔法宝贝</span>
+              </div>
+              <div
+                class="modal-role-item"
+                onclick={() => {
+                  selectRole(1)
+                }}
+                style={currentRole() === 1 ? 'border-color:#4E6EF2' : ''}
+              >
+                <img src={sister} alt="" />
+                <span>心灵姐姐</span>
+              </div>
+              <div
+                class="modal-role-item"
+                onclick={() => {
+                  selectRole(2)
+                }}
+                style={currentRole() === 2 ? 'border-color:#4E6EF2' : ''}
+              >
+                <img src={consultant} alt="" />
+                <span>家庭顾问</span>
+              </div>
             </div>
-            <div class="modal-role-item" onclick={()=>{selectRole(1)}} style={currentRole()===1?'border-color:#4E6EF2':''}>
-            <img src={sister} alt="" />
-              <span>心灵姐姐</span>
+            <div class="modal-btn">
+              <div
+                class="modal-btn-left"
+                onclick={() => {
+                  setShowSelectRole(false)
+                }}
+              >
+                取消
+              </div>
+              <div class="modal-btn-right" onclick={handleSelect}>
+                确定
+              </div>
             </div>
-            <div class="modal-role-item" onclick={()=>{selectRole(2)}} style={currentRole()===2?'border-color:#4E6EF2':''}>
-            <img src={consultant} alt="" />
-              <span>家庭顾问</span>
-            </div>
-          </div>
-          <div class="modal-btn">
-            <div class="modal-btn-left" onclick={()=>{setShowSelectRole(false)}}>取消</div>
-            <div class="modal-btn-right" onclick={handleSelect}>确定</div>
           </div>
         </div>
-      </div>
       </Show>
       <div class="close" onclick={handleClose}>
         <img src={close} alt="" />
