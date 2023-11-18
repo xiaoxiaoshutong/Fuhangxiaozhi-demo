@@ -16,6 +16,7 @@ import MarkdownIt from 'markdown-it'
 import mdKatex from 'markdown-it-katex'
 import mdHighlight from 'markdown-it-highlightjs'
 
+
 export default () => {
   let inputRef: HTMLInputElement
   let dialogRef: HTMLDivElement
@@ -294,7 +295,7 @@ export default () => {
             <input
               ref={inputRef!}
               type="text"
-              placeholder="你能帮我学习加分吗………"
+              placeholder="你能帮我吗………"
             />
           </div>
           <div class="send" onclick={sendMessage}>
@@ -375,7 +376,7 @@ export default () => {
           </div>
         </div>
       </Show>
-      <div class="close" onclick={handleClose}>
+      <div onclick={handleClose} class={browser.versions.weixin?'close display-none':'close'}>
         <img src={close} alt="" />
       </div>
     </div>
