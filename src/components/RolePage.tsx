@@ -6,7 +6,6 @@ import sister from '../assetcs/images/sister.png'
 import sistergif from '../assetcs/images/sister.gif'
 import consultant from '../assetcs/images/consultant.png'
 import consultantgif from '../assetcs/images/consultant.gif'
-import banner from '../assetcs/images/banner.gif'
 
 export default () => {
   let video: HTMLVideoElement
@@ -57,31 +56,30 @@ export default () => {
       </div>
     </div>
     <div class="gif">
-      <img src={banner} alt="" />
+      <img src={babygif} alt="" class={role()===0?'':'display-none'}/>
+      <img src={sistergif} alt="" class={role()===1?'':'display-none'}/>
+      <img src={consultantgif} alt="" class={role()===2?'':'display-none'}/>
 
     </div>
     <div class="role-title">选择助手：</div>
     <div class="role-main" id="role-main">
       <div onclick={()=>{roleClick(0)}} class={role()===0?'main-item role-main-avtive':'main-item'}>
         <div class="avatar">
-            <img src={babygif} alt="" class={role()!==0?'display-none':''}/>
-            <img src={baby} alt="" class={role()===0?'display-none':''}/>
+            <img src={baby} alt=""/>
         </div>
         <div class="role-name">魔法宝贝</div>
         <div class="role-modal" data-role="0"></div>
       </div>
       <div onclick={()=>{roleClick(1)}} class={role()===1?'main-item role-main-avtive':'main-item'} >
         <div class="avatar">
-            <img src={sistergif} alt="" class={role()!==1?'display-none':''}/>
-            <img src={sister} alt="" class={role()===1?'display-none':''}/>
+            <img src={sister} alt=""/>
         </div>
         <div class="role-name">心灵姐姐</div>
         <div class="role-modal" data-role="1"></div>
       </div>
       <div onclick={()=>{roleClick(2)}} class={role()===2?'main-item role-main-avtive':'main-item'}>
         <div class="avatar">
-            <img src={consultantgif} alt="" class={role()!==2?'display-none':''}/>
-            <img src={consultant} alt="" class={role()===2?'display-none':''}/>
+            <img src={consultant} alt=""/>
         </div>
         <div class="role-name">家庭顾问</div>
         <div class="role-modal" data-role="2"></div>
