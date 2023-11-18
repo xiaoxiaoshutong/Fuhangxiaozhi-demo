@@ -90,7 +90,7 @@ export default () => {
         return { role: elem.role, content: elem.content }
       })
       const timestamp = Date.now()
-      setLoading(true)
+      setLoading(false)
       const response = await fetch('/api/generate', {
         method: 'POST',
         body: JSON.stringify({
@@ -127,7 +127,6 @@ export default () => {
         }
         done = readerDone
       }
-      setLoading(false)
       setMessageList([
         ...messageList(),
         {
@@ -139,7 +138,8 @@ export default () => {
       setCurrentAssistantMessage('')
       instantToBottom()
     } catch (err) {
-      setLoading(false)
+      setLoading(true)
+      instantToBottom()
       console.log(err)
     }
   }
@@ -284,9 +284,9 @@ export default () => {
               <div class="content">{currentAssistantMessage()}</div>
             </div>
           </Show>
-          {/* <Show when={loading()}>
-            <div class="loading">{roleInfo().name}正在思考中...</div>
-          </Show> */}
+          <Show when={loading()}>
+            <div class="loading">您的网络开了小差,请稍后再试...</div>
+          </Show>
         </div>
         <div class="send-message">
           <div class="clear" onclick={clearMessage}>
