@@ -1,11 +1,8 @@
 import { createSignal,onMount,Show } from 'solid-js'
 import '../assetcs/css/role.css'
-import babygif from '../assetcs/images/baby.gif'
 import baby from '../assetcs/images/baby.png'
 import sister from '../assetcs/images/sister.png'
-import sistergif from '../assetcs/images/sister.gif'
 import consultant from '../assetcs/images/consultant.png'
-import consultantgif from '../assetcs/images/consultant.gif'
 
 export default () => {
   let video: HTMLVideoElement
@@ -56,9 +53,9 @@ export default () => {
       </div>
     </div>
     <div class="gif">
-      <img src={babygif} alt="" class={role()===0?'':'display-none'}/>
-      <img src={sistergif} alt="" class={role()===1?'':'display-none'}/>
-      <img src={consultantgif} alt="" class={role()===2?'':'display-none'}/>
+      <img src="https://canada-public.oss-cn-shenzhen.aliyuncs.com/pub_20240229/0605434197634c419f5f4fbf8ec9a547.gif" alt="" class={role()===0?'':'display-none'}/>
+      <img src="https://canada-public.oss-cn-shenzhen.aliyuncs.com/pub_20240229/e0c9a904b4c0432bb092c121fe92cd76.gif" alt="" class={role()===1?'':'display-none'}/>
+      <img src="https://canada-public.oss-cn-shenzhen.aliyuncs.com/pub_20240229/aaeba6b6adcf41278ece86fe54f05169.gif" alt="" class={role()===2?'':'display-none'}/>
 
     </div>
     <div class="role-title">选择助手：</div>
